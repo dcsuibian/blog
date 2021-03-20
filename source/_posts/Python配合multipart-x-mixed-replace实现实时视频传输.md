@@ -2,6 +2,7 @@
 title: Python配合multipart/x-mixed-replace实现实时视频传输
 date: 2021-03-19 15:23:54
 tags: Python
+description: 用python程序来解析multipart/x-mixed-replace内容
 ---
 # 参考链接
 
