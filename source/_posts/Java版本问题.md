@@ -13,25 +13,13 @@ description: javac的-source、-target、--release相关问题
 * 如果你的目标平台是Java N，那么你写代码时就不应该用Java M（假设M>N）的新功能。比如，如果你的代码用了Java 11的新功能，你就不能让它运行在Java 8上。
 * 用`--release`吧。
 
-# 前言
-
-其实对Java的版本问题出现好奇心是在用了其它语言之后。
-
-因此接下来的介绍过程中，会引入一些其它语言的对比。
-
 # 正文
 
-## ①、转译？
+# ①、向后兼容性
 
-如果你用JavaScript写过比较工程化的项目，那么你也许会知道一些工具可以把一些比较新的语法转译掉。
+就我个人的经验，如果我需要使用一个新的jar包，那么我会直接去Maven Repository搜，搜到后添加到依赖里就可以了，没有管过jar包的作者是在Java几上面编译的。那这些jar包的作者是怎么控制兼容性的呢？
 
-比方说，[Babel](https://babeljs.io/)就可以把一些ES6的代码转成ES5的代码以在老的平台上运行。
-
-![image-20210509000716422](images/image-20210509000716422.png)
-
-那么很自然地，你也许会想，那Java有没有类似的工具呢？如果我只用了新特性的一小部分，或者完全不用，那么是不是就可以运行在更低版本的Java上？
-
-这还是挺有可能发生的，例如当你下载JDK的时候你选择了较新的JDK11。写了一些工具代码想发布出去供人使用，但听说大家都偏爱Java 8，看了看自己的代码，发现没用到什么新特性。准备试一试。
+答案很简单：用低一些的JDK版本编译就好。
 
 比如，一个简单的HelloWorld程序：
 
@@ -47,7 +35,7 @@ public class Main {
 
 ![image-20210509002551122](images/image-20210509002551122.png)
 
-切换到Java8后：
+切换到Java8后运行：
 
 ![image-20210509002828041](images/image-20210509002828041.png)
 
@@ -59,65 +47,151 @@ public class Main {
 
 原来，`.class`文件有版本的。JDK升级的时候，`.class`文件也会升级。JDK11编译出的`.class`是55.0版本，而Java8最多只能支持到52.0版本。
 
-## ②、`-source`、`-target`选项
+但相反，如果我使用JDK8进行编译，使用Java 11进行运行呢？
 
-其实上面的例子的解答很简单，使用如下命令就好：
+![image-20210509151310425](images/image-20210509151310425.png)
 
-```bash
-javac -source 8 -target 8 Main.java
-```
+![image-20210509151340644](images/image-20210509151340644.png)
 
-在Java11上编译、运行：
+可以看到，这是没问题的。
 
-![image-20210509003847555](images/image-20210509003847555.png)
-
-在Java8上运行：
-
-![image-20210509003957220](images/image-20210509003957220.png)
-
-Ok，没问题，现在我不用下载JDK8，只要增加两个参数就好（可以看到在Java11上运行也没可以，这里就涉及到一点向后兼容性了，我们稍后再谈）
-
-
-
-但是，但是，当你用了一段时间后，你可能会发现，这个`-source`和`-target`总是如影随行、如胶似漆。
-
-默认地，如果当前你用的是JDK11，那么`-source`和`-target`的值都会是11，很合理。
-
-但你无法去掉其中的任何一个。
-
-如果你去掉了`-target`，那么没有意义，因为你是要放到更低级别的目标上。（实际测试的话，即使你这么做了，编译器也只会把代码视作是Java8的，而仍然编译成Java11对应的`.class`文件）
-
-那么如果你去掉了`-source`呢？
-
-![image-20210509005402751](images/image-20210509005402751.png)
-
-可以看到，没有生成`.class`文件，编译失败。编译器认为`-source`是11，而目标版本是8，不允许这么操作。
-
-这也就判了交叉编译的死刑了，即使你没用到Java11的新特性，只要编译器认为代码是Java11的，就不允许这么操作。再说万一如果你真的用了一些呢。。。
-
-## ③ 暂时总结
-
-实际上，如果你去查资料可以发现，Java支持`binary`级别的向后兼容：
+如果你去查资料可以发现，**Java支持`binary`级别的向后兼容**：
 
 ![image-20210509010220564](images/image-20210509010220564.png)
 
-所以如果你在JDK7或JDK6的环境下编译出了一个`.class`文件，那么它在之后的Java8、Java11、Java16甚至更以后的Java上都能跑。
+简单来说如果你在JDK7或JDK6的环境下编译出了一个`.class`文件，那么它在之后的Java8、Java11、Java16甚至更以后的Java上都能跑。我这里想强调的是**这种向后兼容性是有官方保证的**。
 
-它这里还提到了`Compatibility Guide`，不过可以看到，`Binary Compatibility`里并没有什么内容。
 
-![image-20210509010431866](images/image-20210509010431866.png)
 
-你也可以在[stackoverflow](https://stackoverflow.com/questions/54447541/how-to-produce-code-in-java-11-but-target-java-8-and-above)上找到为什么这样是不行的：![image-20210509010734128](images/image-20210509010734128.png)
+事实上，我之所以可以直接导jar包，是因为我一般在使用Java 11（毕竟长期支持），而现在用的最多的却还是Java 8。
 
-其中，Holger的回答就是在JDK升级的过程中，`.class`文件也升级了，JDK11的一些新功能确确实实会对应`.class`文件的变化，所以很难生成适用于Java8的`.class`文件。
+以Spring为例。下载最新的5.3.6的jar包后，查看`META-INF/MAINFEST.MF`文件可以发现，它是在JDK 8上编译的。
 
-而我认为Buurman的回答更具合理性，他说：如果你没有用到任何Java11的新功能，那么你的源代码基本上本来就可以算是Java8的代码了。
+![image-20210509151914535](images/image-20210509151914535.png)
+
+而因为向后兼容性的存在，所以使用Java 8以上版本的人都能使用这个`jar`包。
+
+## ②、转译
+
+上面的情况是你作为一个框架的使用者思考的问题，而下面的问题是你作为一个框架的开发者思考的问题。
+
+
+
+如果你用JavaScript写过比较工程化的项目，那么你也许会知道一些工具可以把一些比较新的语法转译掉。
+
+比方说，[Babel](https://babeljs.io/)就可以把一些ES6的代码转成ES5的代码以在老的平台上运行。
+
+![image-20210509000716422](images/image-20210509000716422.png)
+
+那么很自然地，你也许会想，那Java有没有类似的工具呢？如果我完全不用新特性，或只用了很简单的新特性（例如Java10的`var`关键字），那么是不是就可以运行在更低版本的Java上？
+
+这还是挺有可能发生的，例如当你下载JDK的时候你选择了较新的JDK11。写了一些工具代码想发布出去供人使用，但听说大家都偏爱Java 8，所以会想，Java能不能把我的Java11的代码转成Java8的代码，或者更直接一点——直接帮我把Java11的代码编译成适合Java 8的`.class`文件。
+
+
+
+
+
+剧透一下，**不行！！！**
+
+不过如果你真的没有用到任何新特性，那么你也不用下载JDK8，使用这个命令就行：
+
+```shell
+javac -source 8 -target 8 Main.java
+```
+
+
+
+实际上，如果查看过`javac`的命令行文档。那么你会发现`-source`和`-target`选项。
+
+![image-20210509153418933](images/image-20210509153418933.png)
+
+默认地，如果当前你用的是JDK11，那么`-source`和`-target`的值都会是11，很合理。
+
+当我第一次看到这个的时候，我以为用这两个参数就能实现交叉编译。
+
+结果我错了：
+
+![image-20210509005402751](images/image-20210509005402751.png)
+
+这两个参数有一个要求：`-source`的值必须小于等于`-target`的值。而当你不输入其中一个参数时，另一个就默认采用当前的Java版本（这个例子中是11）。
+
+其实也就差不多判了交叉编译的死刑了。
+
+[stackoverflow](https://stackoverflow.com/questions/54447541/how-to-produce-code-in-java-11-but-target-java-8-and-above)上有关于这个问题的回答：
+
+![image-20210509153932072](images/image-20210509153932072.png)
+
+简单的说，Java不支持这种交叉编译的原因是，新版本的Java中提供的一些新功能往往是确确实实地对应着`.class`文件的变化的。所以支持这种功能比较困难。
+
+不过，如果你完全不用到任何新特性，那么你也不用去特地下载一个JDK8，只要这样就可以了：
+
+![image-20210509154318633](images/image-20210509154318633.png)
+
+可能你已经发现了，Maven中也有对应的选项：
+
+![image-20210509154436985](images/image-20210509154436985.png)
+
+## ③、`--release`选项
+
+看了上面的例子，你可能会想：
+
+`-source`的值必须小于等于`-target`的值。
+
+当`-source`等于`-target`版本的时候，那就相当于把JDK降了版本。
+
+那当`-source`小于`-target`版本的时候，又有什么用呢？
+
+
+
+在网上搜索了一段时间后，我得出了结论：基本没什么用。
+
+ 因为你想啊：
+
+如果你指定了`-source`是8，而`-target`是11，那么你依然得按Java8来编写代码。
+
+而且编译出来的`.class`文件也不能在Java8上面运行。
+
+这种用法可能有一定的作用，但至少我还没碰到过需要这么写的情况。
+
+
+
+大部分情况下，`-source`和`-target`都是相等的，而且你可以发现，这俩总是如影随行。
+
+因为只写`-source 8`相当于`-source 8 -target 11`，干脆不写就好。
+
+只写`-target 8`相当于`-source 11 -target 8`，这就报错了呀。
+
+
+
+Java官方也发现了这个问题，所以它们推出了：`--release`。（貌似是从Java9出现的）
+
+![image-20210509160017409](images/image-20210509160017409.png)
+
+查看官方的文档可以发现，现在用`--release N`就可以替代`-source N -target N`，
+
+但也不是完全相同，可以看到还有两个`-bootclasspath`和`--system`参数。
+
+不过这就超过这篇文章的范围了（其实是我也不太清楚有什么区别，但也懒得查）。
+
+
+
+Maven中的对应配置：
+
+![image-20210509160705247](images/image-20210509160705247.png)
+
+# 多余的话
+
+
 
 # 参考资料
 
 1. [JEP 247: Compile for Older Platform Versions](http://openjdk.java.net/jeps/247)
-
 2. [Upgrading major Java versions](https://blogs.oracle.com/java-platform-group/upgrading-major-java-versions)
-
 3. [How to produce code in Java 11, but target Java 8 and above?](https://stackoverflow.com/questions/54447541/how-to-produce-code-in-java-11-but-target-java-8-and-above)
+4. [如何使用Javac的source参数](https://www.sunmoonblog.com/2018/08/27/javac-source/)
+5. [javac中的source和target的区别](https://segmentfault.com/q/1010000002959346)
+
+
+
+
 
