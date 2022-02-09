@@ -1,7 +1,6 @@
 ---
-title: CSS像素与物理像素的区别
+title: 浅谈CSS像素、视口及移动端适配
 tags: CSS
-description: CSS像素与物理像素的区别
 ---
 
 # 引言
