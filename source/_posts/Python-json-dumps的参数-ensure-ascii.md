@@ -94,13 +94,13 @@ print(case2['country'])
 
 既然你已经知道了区别，那么就是选哪种的问题了。
 
-
+<br/>
 
 * 使用转译的方式（`ensure_ascii=True`）兼容性更好，不容易出现乱码，但问题就是”however those escapes will be hard to read when viewed in a text editor“说的那样，当使用文本编辑器打开时，不容易看懂。
 
 * 使用非转译的方式（`ensure_ascii=False`）更直观，当你想要打开它看看内容时，就比较易于理解。
 
-
+<br/>
 
 实际上，如果你要接触只能处理ASCII字符的系统，那就没得选，只能采取转译方式。
 

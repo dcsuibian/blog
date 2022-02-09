@@ -61,7 +61,7 @@ public class Main {
 
 简单来说如果你在JDK7或JDK6的环境下编译出了一个`.class`文件，那么它在之后的Java8、Java11、Java16甚至更以后的Java上都能跑。我这里想强调的是**这种向后兼容性是有官方保证的**。
 
-
+<br/>
 
 事实上，我之所以可以直接导jar包，是因为我一般在使用Java 11（毕竟长期支持），而现在用的最多的却还是Java 8。
 
@@ -75,7 +75,7 @@ public class Main {
 
 上面的情况是你作为一个框架的使用者思考的问题，而下面的问题是你作为一个框架的开发者思考的问题。
 
-
+<br/>
 
 如果你用JavaScript写过比较工程化的项目，那么你也许会知道一些工具可以把一些比较新的语法转译掉。
 
@@ -87,9 +87,9 @@ public class Main {
 
 这还是挺有可能发生的，例如当你下载JDK的时候你选择了较新的JDK11。写了一些工具代码想发布出去供人使用，但听说大家都偏爱Java 8，所以会想，Java能不能把我的Java11的代码转成Java8的代码，或者更直接一点——直接帮我把Java11的代码编译成适合Java 8的`.class`文件。
 
+<br/>
 
-
-
+<br/>
 
 剧透一下，**不行！！！**
 
@@ -99,7 +99,7 @@ public class Main {
 javac -source 8 -target 8 Main.java
 ```
 
-
+<br/>
 
 实际上，如果查看过`javac`的命令行文档。那么你会发现`-source`和`-target`选项。
 
@@ -141,7 +141,7 @@ javac -source 8 -target 8 Main.java
 
 那当`-source`小于`-target`版本的时候，又有什么用呢？
 
-
+<br/>
 
 在网上搜索了一段时间后，我得出了结论：基本没什么用。
 
@@ -153,7 +153,7 @@ javac -source 8 -target 8 Main.java
 
 这种用法可能有一定的作用，但至少我还没碰到过需要这么写的情况。
 
-
+<br/>
 
 大部分情况下，`-source`和`-target`都是相等的，而且你可以发现，这俩总是如影随行。
 
@@ -161,7 +161,7 @@ javac -source 8 -target 8 Main.java
 
 只写`-target 8`相当于`-source 11 -target 8`，这就报错了呀。
 
-
+<br/>
 
 Java官方也发现了这个问题，所以它们推出了：`--release`。（貌似是从Java9出现的）
 
@@ -173,7 +173,7 @@ Java官方也发现了这个问题，所以它们推出了：`--release`。（�
 
 不过这就超过这篇文章的范围了（其实是我也不太清楚有什么区别，但也懒得查）。
 
-
+<br/>
 
 Maven中的对应配置：
 
@@ -189,7 +189,7 @@ Maven中的对应配置：
 
 真的感觉恰到好处。
 
-
+<br/>
 
 一定要对比（黑）一下JavaScript。（这篇文章主要就是受它的影响）
 
@@ -209,7 +209,7 @@ Java注重于后端，相比来说，开发者就更舒服一点。用了新的�
 4. [如何使用Javac的source参数](https://www.sunmoonblog.com/2018/08/27/javac-source/)
 5. [javac中的source和target的区别](https://segmentfault.com/q/1010000002959346)
 
+<br/>
 
-
-
+<br/>
 

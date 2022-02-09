@@ -114,7 +114,7 @@ Mockjs官方是`nuysoft`的Mock，而mockjs2是`sendya`的Mock，但是`sendya`�
 
 ![image-20210422135101885](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151722.png)
 
-
+<br/>
 
 答案是：
 
@@ -136,7 +136,7 @@ MockXMLHttpRequest.prototype.upload = xhr.upload;
 
 mockjs2的代码位置有一些变化。
 
-
+<br/>
 
 <span style="color:red">不过这么做了以后，我的网页又不知道出了什么错，就一直在转圈的页面，控制台也不报错。应该是代码里出现了死循环了</span>
 
@@ -162,7 +162,7 @@ mockjs2的代码位置有一些变化。
 
 问题的出现原因就是Mockjs覆盖了XMLHttpRequest导致其它使用XHR的代码出错。
 
-
+<br/>
 
 个人很感谢greper，但说实话，使用mockjs-x这种方式也不太完美。单纯为了修复一个bug去使用另一个包。这样的话，mockjs官方有更新时就比较麻烦。
 
