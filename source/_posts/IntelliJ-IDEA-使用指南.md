@@ -1,0 +1,265 @@
+---
+title: IntelliJ IDEA 使用指南
+tags: 工具 Java JetBrains IDEA
+description: IDEA的介绍、配置与使用
+date: 2022-08-20 00:46:18
+---
+
+
+
+# 前言
+
+IntelliJ IDEA版本：2022.2.1
+
+操作系统：Windows 11 64位
+
+# 安装
+
+## 下载与购买
+
+这个不必多说，去 [JetBrain官网](https://www.jetbrains.com/)直接下载就好。
+
+![image-20220819213632439](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819213632439.png)
+
+虽然有社区版，但建议直接订阅Ultimate终极版，甚至直接上JetBrains全家桶。
+
+<img src="https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819213945383.png" alt="image-20220819213945383" style="zoom: 25%;" />
+
+虽然价格不便宜，但也会相当大地提升工作效率。
+
+* 学生党可以申请免费使用（最好有edu教育邮箱），每年需要手动续订
+* 个人购买的产品是可以用于商业环境的（必须你主动买，公司给你钱让你去买个人版是不行的）
+* 开源项目可以申请免费使用，但仅能用于你的开源项目
+* 对比下隔壁Visual Studio，其实也不是很贵
+
+## 安装
+
+有几步稍微注意下：
+
+![image-20220819215350730](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819215350730.png)
+
+可以按个人喜好设置。
+
+* 配置环境变量后可以直接在终端启动IDEA
+
+```powershell
+idea 项目文件夹
+```
+
+* 右键菜单同理，但个人感觉不需要
+* `.java`等代码文件如果要单独打开，我一般用vscode，也不需要。
+
+安装完后启动，显示启动台：
+
+![image-20220819220412680](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819220412680.png)
+
+不过这个启动台中能做的设置项并不多，因此建议先打开一个项目（比如一个空文件夹）：
+
+1. 在桌面新建一个`empty-dir`文件夹
+2. 点击启动台的`Open`按钮打开此文件夹
+3. 完成下面的配置
+4. 丢弃`empty-dir`文件夹
+
+现在就是日常工作的界面了：
+
+![image-20220819221059801](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819221059801.png)
+
+# 详细设置
+
+## 配置代理
+
+**IDEA默认不会使用代理！！！**
+
+良好的网络是必备条件，因此放在第一步。
+
+假设你的系统代理已开启
+
+1. 点击`File`（文件）-->`Settings`（设置），打开`Settings`面板
+2. 打开`Appearance & Behavior`（外观与行为）-->`System Settings`（系统设置）-->`HTTP Proxy`（HTTP代理）
+3. 选择`Auto-detect proxy settings`（自动检测代理设置）后，点击`Check Connection`输入一个外网网址测试下
+4. 连接成功后点最下方的`OK`按钮以应用
+
+![image-20220819221823367](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819221823367.png)
+
+![image-20220819222029267](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819222029267.png)
+
+## 中文化
+
+IDEA默认是英文的，有官方中文，但**对其它语言的支持是以插件形式提供的**。
+
+因此：
+
+1. 点击`File`（文件）-->`Settings`（设置），打开`Settings`面板（和上一步相同，后面不再赘述）
+2. 点击`Plugins`，在插件市场中搜索中文插件
+3. 选择由 JetBrains官方提供的中文插件安装
+4. 重启（**插件的变更都需要重启**）
+
+![image-20220819222845722](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819222845722.png)
+
+重启后，IDEA就是中文版了：
+
+![image-20220819223433636](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819223433636.png)
+
+> 在启用中文后，搜索框的内容就需要使用中文了。
+>
+> 以“设置面板”为例，搜索的结果已经不一样了：
+>
+> ![image-20220819223636077](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819223636077.png)![image-20220819223749481](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819223749481.png)
+>
+> 搜索时，IDEA只搜了译文而没有搜对应的原文。
+
+另外，在最新版本中，IDEA自己也会建议你使用本地化的IDEA。
+
+![image-20220819222622680](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819222622680.png)
+
+因此，**请不要直接忽略IDEA的通知**
+
+IDEA的提示包含了很多重要的内容，版本更新、建议安装的插件、构建结果、索引下载等等。
+
+在忽略通知前确保你仔细看过！！！
+
+## 同步功能
+
+IDEA提供了设置同步功能，只要点击右下角的云朵就好：
+
+![image-20220819224436496](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819224436496.png)
+
+但实测效果并不好（这也是我为什么写这篇文章），主要就是拿来同步插件，省一点时间。
+
+同步后，图标应该是白色的小云：
+
+![image-20220819224857089](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819224857089.png)
+
+## 项目设置与新项目设置（小心）
+
+IDEA的设置分为项目型的和全局型的。区分主要看直觉。
+
+所以，如果你要进行一些通用的设置，那么请打开**新项目设置**（就是默认设置）。
+
+**后面我的设置都是改的优先改新项目设置（默认设置）。**
+
+![image-20220819225257869](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819225257869.png)
+
+### 清空项目级的设置
+
+![image-20220819225739106](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819225739106.png)
+
+IDEA会把项目相关的设置放在对应文件夹下的`.idea`文件夹里（隐藏的）。
+
+如果你要情况一个项目的设置，请
+
+1. 关闭IDEA的当前项目窗口
+2. 删除`.idea`文件夹
+3. 重新打开这个项目
+
+
+
+另外，`.idea`文件夹里面的设置都是与你的电脑环境强相关的。
+
+在使用Git时请使用`.gitignore`忽略掉它，**不要上传到Git仓库**影响别人的电脑。
+
+## 文件编码（很关键）
+
+IDEA默认会使用系统编码作为文件和项目的编码，macOS和Linux默认应该都是UTF-8，但Windows就尴尬了。
+
+打开设置面板的`编辑器`-->`文件编码`，把`全局编码`和`项目编码`都改成UTF-8：
+
+![image-20220819230531011](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819230531011.png)
+
+* 如果没有特殊的理由，现代程序员应该统一使用`UTF-8`。
+* `*.properties`属性文件是有自己的标准编码的：`ISO-8859-1`（不是`UTF-8`），因此这里我没有改动，我的建议是在属性文件中就不要使用非ASCII字符。
+  * Spring Boot项目，默认会创建一个`application.properties`文件，可以用`application.yml`替代。
+* BOM是个有点复杂的东西，不展开说了，总之 **主流就是UTF-8 without BOM** 的。建议去了解下，如果你在Windows上用**记事本**则有可能会遇到对应的问题。
+
+# 个人偏好
+
+以下是我个人的一些偏好，与我的使用习惯有关。
+
+我会解释为什么要这么设置，你可以根据自己的喜好来选。
+
+## 插件
+
+* **Rainbow Brackets**，用于显示配对的括号
+
+![image-20220819232736902](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819232736902.png)
+
+* **GitHub Copilot**，收费插件，AI代码补全。（我自己会用、会推荐，但因为收费，所以不是非常推荐）
+
+不多，主要是因为现在IDEA已经捆绑了不少插件了，在有可用插件时，IDEA也会提示。
+
+## 启动时不打开项目
+
+IDEA在启动时会自动打开上一次的项目（对有多个项目的人来说不太方便）。
+
+取消勾选“**启动时重新打开项目**”这个选项，下次IDEA就会先显示启动台了。
+
+![image-20220819234302084](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819234302084.png)
+
+## 切换终端
+
+点击窗口下方的“终端”按钮可以在IDE里直接使用终端：
+
+![image-20220819234528524](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819234528524.png)
+
+其行为可以在这里配置：
+
+![image-20220819234424586](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819234424586.png)
+
+* 我个人会自行安装最新版本的PowerShell（目前是v7），也就是这里的`pwsh.exe`，你没安装就没有
+* 老版本的IDEA可能默认使用的是cmd，非常不推荐
+* 建议浏览一下下面的选项。其中这个“**选中时复制到剪贴板**”的功能其实挺不错的。（虽然我没开，因为我也才发现有这个功能）
+
+## Maven
+
+IDEA是自带了Maven的，但捆绑的Maven没有办法在命令行中使用（比如`mvn package`），所以个人还是建议去[Maven官网](https://maven.apache.org/)自行下载Maven，配置Maven相关的环境变量（`M2_HOME`），然后切换。
+
+![image-20220820000228614](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220820000228614.png)
+
+（上面这张图其实是在Mac上截的）
+
+其实最好的顺序应该是：
+
+1. 如果项目中有Maven Wrapper，先使用Maven Wraper
+2. 使用独立的Maven
+3. 使用IDEA自带的Maven
+
+可惜这里只能设置一个。
+
+为了通用性，请把Maven相关的配置放在`~/.m2/settings.xml`里，这样在使用不同的Maven时，配置可以共享。
+
+> **Maven Wrapper是什么？**
+>
+> 项目开发过程中，往往对于版本有着严格的要求。要正常运转，语言的版本、类库的版本甚至是相关工具的版本可能都有要求。Maven作为一个构建工具，自身的版本也可能有影响。
+>
+> Maven Wapper就是用于解决这个问题的，确保Maven的版本也一致。Spring Boot创建的项目中就会有这个：
+>
+> ![image-20220820001156227](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220820001156227.png)
+>
+> 使用**Maven Wrapper**，那么它就会**自动下载并使用对应的Maven**。
+>
+> 
+>
+> 但以个人的经验来说，**没有必要，直接用最新版的Maven就好。**
+>
+> Maven很成熟，向后兼容性也很好。即使你是Java 1.5的项目，也能用最新版本的Maven。（要完全理清项目Java版本、Maven版本、Maven所用的Java版本之间的关系有点麻烦）我没见过必须要用Maven Wrapper的项目。
+
+# 其他
+
+* **教程与快捷键**
+
+![image-20220820003159559](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220820003159559.png)
+
+最新版本的IDEA已经自带了学习教程了，真心建议看一看，至少了解一下快捷键，能省掉非常多的时间。
+
+* **IDE的提示**
+
+![image-20220820003436329](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220820003436329.png)
+
+要注意观察IDE给你的提示，这个绿色的波浪线是因为上一行的`people`单词拼错了。变量名是灰色的是因为后面的代码都没有使用它。以后你还可能见到黄色的警告。
+
+仔细看一看，能帮助你避免掉不少低级错误。
+
+* **其他JetBrains工具**
+
+JetBrains家有很多好用的IDE，如WebStorm、CLion、PyCharm等等，这些其实是在IDEA的基础上发展起来的。因此界面、快捷键、设置都非常相似。
+
