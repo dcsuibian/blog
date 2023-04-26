@@ -5,7 +5,7 @@ db.json
 node_modules/
 public/
 .deploy*/
-source/_drafts/images
-source/_posts/images
+_multiconfig.yml
+
 source/_drafts/assets
 source/_posts/assets
