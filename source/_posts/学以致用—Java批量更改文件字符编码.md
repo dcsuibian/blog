@@ -39,9 +39,9 @@ public class Main {
 
 运行前：
 
-![image-20210501195024201](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210501195301.png)
+![image-20210501195024201](https://wexcdn.com/img/20210501195301.png)
 
-![image-20210501195059993](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210501195304.png)
+![image-20210501195059993](https://wexcdn.com/img/20210501195304.png)
 
 <br/>
 
@@ -49,6 +49,6 @@ public class Main {
 
 运行后：
 
-![image-20210501195133387](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210501195306.png)
+![image-20210501195133387](https://wexcdn.com/img/20210501195306.png)
 
 成功！！！

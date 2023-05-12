@@ -11,7 +11,7 @@ description: JSON中表示非ASCII字符的两种方式
 
 今天，我在看[JSON Lines](https://jsonlines.org/)介绍的时候看到了这么一句话：
 
-![image-20210610232332871](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20210610232332871.png)
+![image-20210610232332871](https://wexcdn.com/img/image-20210610232332871.png)
 
 > JSON allows encoding Unicode strings with only ASCII escape sequences, however those escapes will be hard to read when viewed in a text editor.
 
@@ -25,7 +25,7 @@ description: JSON中表示非ASCII字符的两种方式
 
 [json 中的ensure_ascii=False](https://www.jianshu.com/p/86d66257de41) （貌似用的是python 2，但不重要）
 
-![image-20210611001152714](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20210611001152714.png)
+![image-20210611001152714](https://wexcdn.com/img/image-20210611001152714.png)
 
 可以看到，`ensure_ascii`影响了序列化后的最终形态。
 
@@ -35,7 +35,7 @@ description: JSON中表示非ASCII字符的两种方式
 
 与上面的对应，右边的`\u4e2d\u56fd`就是`中国`两个字在Unicode中的表示。
 
-![image-20210610234421052](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20210610234421052.png)
+![image-20210610234421052](https://wexcdn.com/img/image-20210610234421052.png)
 
 用Python测试下：
 
@@ -56,7 +56,7 @@ print('case2读取：')
 print(case2['country'])
 ```
 
-![image-20210610235652946](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20210610235652946.png)
+![image-20210610235652946](https://wexcdn.com/img/image-20210610235652946.png)
 
 可以看到，输出的时候都输出了”中国“两个字，可见写中国和`\u4e2d\u56fd`的效果是一样的，并且读取的时候不需要增加任何参数，自动完成。
 
@@ -76,13 +76,13 @@ print(case2['country'])
 
 举个例子，如果我现在拿到了一个`.json`文件，但是我使用一个非常老的编辑器，或者我使用的编辑器使用不同的编码打开它会怎样？
 
-![image-20210611003300773](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20210611003300773.png)![image-20210611003331814](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20210611003331814.png)![image-20210611003417118](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20210611003417118.png)![image-20210611003443012](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20210611003443012.png)
+![image-20210611003300773](https://wexcdn.com/img/image-20210611003300773.png)![image-20210611003331814](https://wexcdn.com/img/image-20210611003331814.png)![image-20210611003417118](https://wexcdn.com/img/image-20210611003417118.png)![image-20210611003443012](https://wexcdn.com/img/image-20210611003443012.png)
 
 可以看到，当使用了错误的字符编码打开文件时，使用`中国`这种方式编写的文件出现了乱码问题，而使用`\u4e2d\u56fd`这种方式编写的文件则完全没有问题。
 
 > 实际上这跟字符编码的历史有关。我相信是个程序员都知道ASCII码，相当于字符编码的”老祖宗“了。因此，大部分编码都是跟ASCII兼容的。你可以试试看，当你只用ASCII字符集里的字编写文本，当你切换编码时，你会发现丝毫没有影响：
 >
-> ![image-20210611003942010](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20210611003942010.png)
+> ![image-20210611003942010](https://wexcdn.com/img/image-20210611003942010.png)
 
 但是，那些非ASCII的字符就没那么好运了，尽管现在大家都在提倡用UTF-8，但免不了还是有用其它字符集的文件。
 
@@ -110,7 +110,7 @@ print(case2['country'])
 
 如果你用过IDEA，你会知道文件编码中有一个设置：
 
-![image-20210611010050638](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20210611010050638.png)
+![image-20210611010050638](https://wexcdn.com/img/image-20210611010050638.png)
 
 如果有兴趣的话，可以自己建一个`.properties`文件，在开和关的情况下写一些非ASCII字符，用文本编辑器打开看看。
 

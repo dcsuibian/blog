@@ -21,7 +21,7 @@ pip install opencv-python flask
 
 建立如下目录结构：
 
-![image-20210320123717627](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210320124309.png)
+![image-20210320123717627](https://wexcdn.com/img/20210320124309.png)
 
 `app.py`内容：
 
@@ -75,7 +75,7 @@ index.html内容：
 
 启动应用程序，打开网页就能看到视频传输成功：
 
-![image-20210320124124702](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210320124310.png)
+![image-20210320124124702](https://wexcdn.com/img/20210320124310.png)
 
 我的更改主要是使用了静态HTML文件，以摄像头读取的内容作为视频源，其它没什么。
 
@@ -93,7 +93,7 @@ index.html内容：
 
 让我们看看Flask的日志：
 
-![image-20210320124821978](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210320141100.png)
+![image-20210320124821978](https://wexcdn.com/img/20210320141100.png)
 
 再看看MIME类型中的`multipart`。我们可以知道，整个视频传输流程都只是在一次HTTP请求中完成的。再看看MIME类型中的`replace`，我们大概可以推断出整个视频传输过程的原理。
 

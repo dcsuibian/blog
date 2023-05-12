@@ -19,11 +19,11 @@ IntelliJ IDEA版本：2022.2.1
 
 这个不必多说，去 [JetBrain官网](https://www.jetbrains.com/)直接下载就好。
 
-![image-20220819213632439](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819213632439.png)
+![image-20220819213632439](https://wexcdn.com/img/image-20220819213632439.png)
 
 虽然有社区版，但建议直接订阅Ultimate终极版，甚至直接上JetBrains全家桶。
 
-<img src="https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819213945383.png" alt="image-20220819213945383" style="zoom: 25%;" />
+<img src="https://wexcdn.com/img/image-20220819213945383.png" alt="image-20220819213945383" style="zoom: 25%;" />
 
 虽然价格不便宜，但也会相当大地提升工作效率。
 
@@ -36,7 +36,7 @@ IntelliJ IDEA版本：2022.2.1
 
 有几步稍微注意下：
 
-![image-20220819215350730](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819215350730.png)
+![image-20220819215350730](https://wexcdn.com/img/image-20220819215350730.png)
 
 可以按个人喜好设置。
 
@@ -51,7 +51,7 @@ idea 项目文件夹
 
 安装完后启动，显示启动台：
 
-![image-20220819220412680](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819220412680.png)
+![image-20220819220412680](https://wexcdn.com/img/image-20220819220412680.png)
 
 不过这个启动台中能做的设置项并不多，因此建议先打开一个项目（比如一个空文件夹）：
 
@@ -62,7 +62,7 @@ idea 项目文件夹
 
 现在就是日常工作的界面了：
 
-![image-20220819221059801](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819221059801.png)
+![image-20220819221059801](https://wexcdn.com/img/image-20220819221059801.png)
 
 # 详细设置
 
@@ -79,9 +79,9 @@ idea 项目文件夹
 3. 选择`Auto-detect proxy settings`（自动检测代理设置）后，点击`Check Connection`输入一个外网网址测试下
 4. 连接成功后点最下方的`OK`按钮以应用
 
-![image-20220819221823367](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819221823367.png)
+![image-20220819221823367](https://wexcdn.com/img/image-20220819221823367.png)
 
-![image-20220819222029267](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819222029267.png)
+![image-20220819222029267](https://wexcdn.com/img/image-20220819222029267.png)
 
 ## 中文化
 
@@ -94,23 +94,23 @@ IDEA默认是英文的，有官方中文，但**对其它语言的支持是以�
 3. 选择由 JetBrains官方提供的中文插件安装
 4. 重启（**插件的变更都需要重启**）
 
-![image-20220819222845722](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819222845722.png)
+![image-20220819222845722](https://wexcdn.com/img/image-20220819222845722.png)
 
 重启后，IDEA就是中文版了：
 
-![image-20220819223433636](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819223433636.png)
+![image-20220819223433636](https://wexcdn.com/img/image-20220819223433636.png)
 
 > 在启用中文后，搜索框的内容就需要使用中文了。
 >
 > 以“设置面板”为例，搜索的结果已经不一样了：
 >
-> ![image-20220819223636077](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819223636077.png)![image-20220819223749481](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819223749481.png)
+> ![image-20220819223636077](https://wexcdn.com/img/image-20220819223636077.png)![image-20220819223749481](https://wexcdn.com/img/image-20220819223749481.png)
 >
 > 搜索时，IDEA只搜了译文而没有搜对应的原文。
 
 另外，在最新版本中，IDEA自己也会建议你使用本地化的IDEA。
 
-![image-20220819222622680](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819222622680.png)
+![image-20220819222622680](https://wexcdn.com/img/image-20220819222622680.png)
 
 因此，**请不要直接忽略IDEA的通知**
 
@@ -122,13 +122,13 @@ IDEA的提示包含了很多重要的内容，版本更新、建议安装的插�
 
 IDEA提供了设置同步功能，只要点击右下角的云朵就好：
 
-![image-20220819224436496](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819224436496.png)
+![image-20220819224436496](https://wexcdn.com/img/image-20220819224436496.png)
 
 但实测效果并不好（这也是我为什么写这篇文章），主要就是拿来同步插件，省一点时间。
 
 同步后，图标应该是白色的小云：
 
-![image-20220819224857089](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819224857089.png)
+![image-20220819224857089](https://wexcdn.com/img/image-20220819224857089.png)
 
 ## 项目设置与新项目设置（小心）
 
@@ -138,11 +138,11 @@ IDEA的设置分为项目型的和全局型的。区分主要看直觉。
 
 **后面我的设置都是改的优先改新项目设置（默认设置）。**
 
-![image-20220819225257869](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819225257869.png)
+![image-20220819225257869](https://wexcdn.com/img/image-20220819225257869.png)
 
 ### 清空项目级的设置
 
-![image-20220819225739106](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819225739106.png)
+![image-20220819225739106](https://wexcdn.com/img/image-20220819225739106.png)
 
 IDEA会把项目相关的设置放在对应文件夹下的`.idea`文件夹里（隐藏的）。
 
@@ -164,7 +164,7 @@ IDEA默认会使用系统编码作为文件和项目的编码，macOS和Linux默
 
 打开设置面板的`编辑器`-->`文件编码`，把`全局编码`和`项目编码`都改成UTF-8：
 
-![image-20220819230531011](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819230531011.png)
+![image-20220819230531011](https://wexcdn.com/img/image-20220819230531011.png)
 
 * 如果没有特殊的理由，现代程序员应该统一使用`UTF-8`。
 * `*.properties`属性文件是有自己的标准编码的：`ISO-8859-1`（不是`UTF-8`），因此这里我没有改动，我的建议是在属性文件中就不要使用非ASCII字符。
@@ -181,7 +181,7 @@ IDEA默认会使用系统编码作为文件和项目的编码，macOS和Linux默
 
 * **Rainbow Brackets**，用于显示配对的括号
 
-![image-20220819232736902](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819232736902.png)
+![image-20220819232736902](https://wexcdn.com/img/image-20220819232736902.png)
 
 * **GitHub Copilot**，收费插件，AI代码补全。（我自己会用、会推荐，但因为收费，所以不是非常推荐）
 
@@ -193,41 +193,41 @@ IDEA在启动时会自动打开上一次的项目（对有多个项目的人来�
 
 取消勾选“**启动时重新打开项目**”这个选项，下次IDEA就会先显示启动台了。
 
-![image-20220819234302084](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819234302084.png)
+![image-20220819234302084](https://wexcdn.com/img/image-20220819234302084.png)
 
 ## 代码补全忽略大小写
 
 IDEA有着不错的代码补全功能，但默认区分大小写（仅首字母），举个例子：
 
-![image-20220824165819353](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220824165819353.png)
+![image-20220824165819353](https://wexcdn.com/img/image-20220824165819353.png)
 
 用每个单词的首字母可以精确定位到对应的方法，除了方法调用，可以这么干的地方还很多。
 
 但有时候还是稍微有点不方便：
 
-![image-20220824171614444](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220824171614444.png)
+![image-20220824171614444](https://wexcdn.com/img/image-20220824171614444.png)
 
 这里我想打`@Deprecated`，但由于首字母`d`是小写，没法补全。
 
 把它去掉：
 
-![image-20220824170508344](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220824170508344.png)
+![image-20220824170508344](https://wexcdn.com/img/image-20220824170508344.png)
 
 **注意，这个是全局设置，在“新项目设置”里没有，就去普通的设置里找。**
 
 效果：
 
-![image-20220824171744072](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220824171744072.png)
+![image-20220824171744072](https://wexcdn.com/img/image-20220824171744072.png)
 
 ## 切换终端
 
 点击窗口下方的“终端”按钮可以在IDE里直接使用终端：
 
-![image-20220819234528524](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819234528524.png)
+![image-20220819234528524](https://wexcdn.com/img/image-20220819234528524.png)
 
 其行为可以在这里配置：
 
-![image-20220819234424586](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220819234424586.png)
+![image-20220819234424586](https://wexcdn.com/img/image-20220819234424586.png)
 
 * 我个人会自行安装最新版本的PowerShell（目前是v7），也就是这里的`pwsh.exe`，你没安装就没有
 * 老版本的IDEA可能默认使用的是cmd，非常不推荐
@@ -237,7 +237,7 @@ IDEA有着不错的代码补全功能，但默认区分大小写（仅首字母�
 
 IDEA是自带了Maven的，但捆绑的Maven没有办法在命令行中使用（比如`mvn package`），所以个人还是建议去[Maven官网](https://maven.apache.org/)自行下载Maven，配置Maven相关的环境变量（`M2_HOME`），然后切换。
 
-![image-20220820000228614](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220820000228614.png)
+![image-20220820000228614](https://wexcdn.com/img/image-20220820000228614.png)
 
 （上面这张图其实是在Mac上截的）
 
@@ -257,7 +257,7 @@ IDEA是自带了Maven的，但捆绑的Maven没有办法在命令行中使用（
 >
 > Maven Wapper就是用于解决这个问题的，确保Maven的版本也一致。Spring Boot创建的项目中就会有这个：
 >
-> ![image-20220820001156227](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220820001156227.png)
+> ![image-20220820001156227](https://wexcdn.com/img/image-20220820001156227.png)
 >
 > 使用**Maven Wrapper**，那么它就会**自动下载并使用对应的Maven**。
 >
@@ -271,13 +271,13 @@ IDEA是自带了Maven的，但捆绑的Maven没有办法在命令行中使用（
 
 * **教程与快捷键**
 
-![image-20220820003159559](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220820003159559.png)
+![image-20220820003159559](https://wexcdn.com/img/image-20220820003159559.png)
 
 最新版本的IDEA已经自带了学习教程了，真心建议看一看，至少了解一下快捷键，能省掉非常多的时间。
 
 * **IDE的提示**
 
-![image-20220820003436329](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/image-20220820003436329.png)
+![image-20220820003436329](https://wexcdn.com/img/image-20220820003436329.png)
 
 要注意观察IDE给你的提示，这个绿色的波浪线是因为上一行的`people`单词拼错了。变量名是灰色的是因为后面的代码都没有使用它。以后你还可能见到黄色的警告。
 

@@ -33,31 +33,31 @@ public class Main {
 
 在Java11上编译、运行：
 
-![image-20210509002551122](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162639.png)
+![image-20210509002551122](https://wexcdn.com/img/20210509162639.png)
 
 切换到Java8后运行：
 
-![image-20210509002828041](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162642.png)
+![image-20210509002828041](https://wexcdn.com/img/20210509162642.png)
 
 失败。
 
 但让我们仔细看看这个错误信息：
 
-![image-20210509003010440](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162644.png)
+![image-20210509003010440](https://wexcdn.com/img/20210509162644.png)
 
 原来，`.class`文件有版本的。JDK升级的时候，`.class`文件也会升级。JDK11编译出的`.class`是55.0版本，而Java8最多只能支持到52.0版本。
 
 但相反，如果我使用JDK8进行编译，使用Java 11进行运行呢？
 
-![image-20210509151310425](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162645.png)
+![image-20210509151310425](https://wexcdn.com/img/20210509162645.png)
 
-![image-20210509151340644](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162647.png)
+![image-20210509151340644](https://wexcdn.com/img/20210509162647.png)
 
 可以看到，这是没问题的。
 
 如果你去查资料可以发现，**Java支持`binary`级别的向后兼容**：
 
-![image-20210509010220564](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162648.png)
+![image-20210509010220564](https://wexcdn.com/img/20210509162648.png)
 
 简单来说如果你在JDK7或JDK6的环境下编译出了一个`.class`文件，那么它在之后的Java8、Java11、Java16甚至更以后的Java上都能跑。我这里想强调的是**这种向后兼容性是有官方保证的**。
 
@@ -67,7 +67,7 @@ public class Main {
 
 以Spring为例。下载最新的5.3.6的jar包后，查看`META-INF/MAINFEST.MF`文件可以发现，它是在JDK 8上编译的。
 
-![image-20210509151914535](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162650.png)
+![image-20210509151914535](https://wexcdn.com/img/20210509162650.png)
 
 而因为向后兼容性的存在，所以使用Java 8以上版本的人都能使用这个`jar`包。
 
@@ -81,7 +81,7 @@ public class Main {
 
 比方说，[Babel](https://babeljs.io/)就可以把一些ES6的代码转成ES5的代码以在老的平台上运行。
 
-![image-20210509000716422](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162651.png)
+![image-20210509000716422](https://wexcdn.com/img/20210509162651.png)
 
 那么很自然地，你也许会想，那Java有没有类似的工具呢？如果我完全不用新特性，或只用了很简单的新特性（例如Java10的`var`关键字），那么是不是就可以运行在更低版本的Java上？
 
@@ -103,7 +103,7 @@ javac -source 8 -target 8 Main.java
 
 实际上，如果查看过`javac`的命令行文档。那么你会发现`-source`和`-target`选项。
 
-![image-20210509153418933](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162653.png)
+![image-20210509153418933](https://wexcdn.com/img/20210509162653.png)
 
 默认地，如果当前你用的是JDK11，那么`-source`和`-target`的值都会是11，很合理。
 
@@ -111,7 +111,7 @@ javac -source 8 -target 8 Main.java
 
 结果我错了：
 
-![image-20210509005402751](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162656.png)
+![image-20210509005402751](https://wexcdn.com/img/20210509162656.png)
 
 这两个参数有一个要求：`-source`的值必须小于等于`-target`的值。而当你不输入其中一个参数时，另一个就默认采用当前的Java版本（这个例子中是11）。
 
@@ -119,17 +119,17 @@ javac -source 8 -target 8 Main.java
 
 [stackoverflow](https://stackoverflow.com/questions/54447541/how-to-produce-code-in-java-11-but-target-java-8-and-above)上有关于这个问题的回答：
 
-![image-20210509153932072](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162659.png)
+![image-20210509153932072](https://wexcdn.com/img/20210509162659.png)
 
 简单的说，Java不支持这种交叉编译的原因是，新版本的Java中提供的一些新功能往往是确确实实地对应着`.class`文件的变化的。所以支持这种功能比较困难。
 
 不过，如果你完全不用到任何新特性，那么你也不用去特地下载一个JDK8，只要这样就可以了：
 
-![image-20210509154318633](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162700.png)
+![image-20210509154318633](https://wexcdn.com/img/20210509162700.png)
 
 可能你已经发现了，Maven中也有对应的选项：
 
-![image-20210509154436985](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162702.png)
+![image-20210509154436985](https://wexcdn.com/img/20210509162702.png)
 
 ## ③、`--release`选项
 
@@ -165,7 +165,7 @@ javac -source 8 -target 8 Main.java
 
 Java官方也发现了这个问题，所以它们推出了：`--release`。（貌似是从Java9出现的）
 
-![image-20210509160017409](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509170927.png)
+![image-20210509160017409](https://wexcdn.com/img/20210509170927.png)
 
 查看官方的文档可以发现，现在用`--release N`就可以替代`-source N -target N`，
 
@@ -177,7 +177,7 @@ Java官方也发现了这个问题，所以它们推出了：`--release`。（�
 
 Maven中的对应配置：
 
-![image-20210509160705247](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210509162704.png)
+![image-20210509160705247](https://wexcdn.com/img/20210509162704.png)
 
 # 多余的话
 

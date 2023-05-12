@@ -11,7 +11,7 @@ https://github.com/nuysoft/Mock/issues/127
 
 我的解决方案是使用了greper提供的mockjs-x
 
-![image-20210422130849038](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151643.png)
+![image-20210422130849038](https://wexcdn.com/img/20210422151643.png)
 
 # 问题描述
 
@@ -19,9 +19,9 @@ https://github.com/nuysoft/Mock/issues/127
 
 在选择上传文件后，控制台爆出了`Uncaught TypeError: this.xhr.upload.addEventListener is not a function`错误。
 
-![image-20210422130526879](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151645.png)
+![image-20210422130526879](https://wexcdn.com/img/20210422151645.png)
 
-![image-20210422130604237](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151647.png)
+![image-20210422130604237](https://wexcdn.com/img/20210422151647.png)
 
 #  发生时的状态
 
@@ -29,11 +29,11 @@ https://github.com/nuysoft/Mock/issues/127
 
 Ant Design Vue Pro的commit记录为：2f663728bfdba21a9b89a4a4a5698ae802087b61
 
-![image-20210422130258391](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151649.png)
+![image-20210422130258391](https://wexcdn.com/img/20210422151649.png)
 
 vue-simple-uploader的版本为：0.7.6
 
-![image-20210422130404783](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151652.png)
+![image-20210422130404783](https://wexcdn.com/img/20210422151652.png)
 
 # 解决过程
 
@@ -45,25 +45,25 @@ vue-simple-uploader的版本为：0.7.6
 
 不过还是没搞明白为什么出错，所以自己研究下。
 
-![image-20210422131303875](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151653.png)
+![image-20210422131303875](https://wexcdn.com/img/20210422151653.png)
 
-![image-20210422131317749](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151656.png)
+![image-20210422131317749](https://wexcdn.com/img/20210422151656.png)
 
 压缩好的代码肯定看不懂。所以去`node_modules`里找到`vue-simple-uploader`，去看它的源代码。
 
-![image-20210422131501522](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151659.png)
+![image-20210422131501522](https://wexcdn.com/img/20210422151659.png)
 
 源代码入口是`index.js`。
 
-![image-20210422131706514](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151701.png)
+![image-20210422131706514](https://wexcdn.com/img/20210422151701.png)
 
-![image-20210422131651789](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151703.png)
+![image-20210422131651789](https://wexcdn.com/img/20210422151703.png)
 
 可以看到，`Uploader`组件是从`./components/uploader.vue`导入的。而`uploader.vue`又是导入了`simple-uploader.js`。
 
 去搜一下的话，发现就是`vue-simple-uploader`作者的另一个项目。
 
-![image-20210422131858401](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151705.png)3
+![image-20210422131858401](https://wexcdn.com/img/20210422151705.png)3
 
 有兴趣可以去看看。不过我们先直接把项目里用到`vue-simple-uploader`的地方换成用源代码。
 
@@ -78,11 +78,11 @@ import Uploader from 'vue-simple-uploader/src/components/uploader'
 
 再次上传文件，可以看到新的报错信息。
 
-![image-20210422132242866](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422132251.png)
+![image-20210422132242866](https://wexcdn.com/img/20210422132251.png)
 
 注意，变成了chunk.js，点进去看看：
 
-![image-20210422132328732](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151710.png)
+![image-20210422132328732](https://wexcdn.com/img/20210422151710.png)
 
 原来是`simple-uploader`里的一个`chunk.js`出错了。
 
@@ -90,11 +90,11 @@ import Uploader from 'vue-simple-uploader/src/components/uploader'
 
 > [MockJS Ajax拦截原理](https://juejin.cn/post/6904153889163968526)
 >
-> ![image-20210422132723086](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151714.png)
+> ![image-20210422132723086](https://wexcdn.com/img/20210422151714.png)
 
 其实已经很清楚了，MockJS会覆盖原生的XMLHttpRequest，所以`chunk.js`里new的已经不是真正的XMLHttpRequest了。
 
-![image-20210422133127851](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151716.png)
+![image-20210422133127851](https://wexcdn.com/img/20210422151716.png)
 
 而github的issue里较前面的解决方案也很清楚，无论是哪种方式都是在原型链上动手脚。
 
@@ -104,21 +104,21 @@ import Uploader from 'vue-simple-uploader/src/components/uploader'
 
 发现这个issue已经是2016年的了，目前Mockjs的版本为1.1.0，所以怀疑官方是不是已经解决了。
 
-![image-20210422134609264](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151718.png)
+![image-20210422134609264](https://wexcdn.com/img/20210422151718.png)
 
 不过要注意，不知道什么原因，ant design pro vue使用的不是mock而是mockjs2。
 
-![image-20210422134838564](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151720.png)
+![image-20210422134838564](https://wexcdn.com/img/20210422151720.png)
 
 Mockjs官方是`nuysoft`的Mock，而mockjs2是`sendya`的Mock，但是`sendya`的是从`nuysoft`的fork出来的，所以我们先尝试下换成mockjs试试。
 
-![image-20210422135101885](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151722.png)
+![image-20210422135101885](https://wexcdn.com/img/20210422151722.png)
 
 <br/>
 
 答案是：
 
-![image-20210422135922976](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151723.png)
+![image-20210422135922976](https://wexcdn.com/img/20210422151723.png)
 
 没有
 
@@ -132,7 +132,7 @@ github上说是在`node_modules/mockjs/dist/mock.js`的8308行加上这句代码
 MockXMLHttpRequest.prototype.upload = xhr.upload;
 ```
 
-![图片](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151725)
+![图片](https://wexcdn.com/img/20210422151725)
 
 mockjs2的代码位置有一些变化。
 
@@ -148,13 +148,13 @@ mockjs2的代码位置有一些变化。
 
 既然官方没解决，就只能用其它人的了。
 
-![image-20210422144322868](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151730.png)
+![image-20210422144322868](https://wexcdn.com/img/20210422151730.png)
 
 如上，`npm i mockjs-x --save`后，替换所有mockjs成mockjs-x就好。
 
-![image-20210422144513241](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151731.png)
+![image-20210422144513241](https://wexcdn.com/img/20210422151731.png)
 
-![image-20210422144934383](https://dcsuibian-public-resources.oss-cn-hangzhou.aliyuncs.com/img/20210422151733.png)
+![image-20210422144934383](https://wexcdn.com/img/20210422151733.png)
 
 成功！！！
 
