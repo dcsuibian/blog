@@ -14,7 +14,13 @@ date: 2023-05-07 18:13:14
 ssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key.pub
 ```
 
+2、SSH公钥上传：
 
+```shell
+ssh-copy-id -i "$HOME/.ssh/id_rsa.pub" user@host
+```
+
+不过这个不适合Windows（无论是客户端还是服务器），Windows还是手动将客户端`id_rsa.pub`的内容追加到`authorized_keys`里。
 
 # SSH公钥验证
 
