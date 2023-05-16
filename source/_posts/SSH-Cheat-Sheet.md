@@ -6,11 +6,11 @@ date: 2023-05-07 18:13:14
 ---
 
 
-# Cheat Sheet
+## Cheat Sheet
 
 1、SSH公钥验证：
 
-```
+```shell
 ssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key.pub
 ```
 
@@ -22,7 +22,20 @@ ssh-copy-id -i "$HOME/.ssh/id_rsa.pub" user@host
 
 不过这个不适合Windows（无论是客户端还是服务器），Windows还是手动将客户端`id_rsa.pub`的内容追加到`authorized_keys`里。
 
-# SSH公钥验证
+3、SSH本机代理转发：
+
+```shell
+ssh -R 7890:localhost:7890 -N remote-host
+```
+
+然后在远程主机上：
+
+```shell
+export http_proxy='http://127.0.0.1:7890'
+export https_proxy=$http_proxy
+```
+
+## SSH公钥验证
 
 当我们第一次连接到某个SSH服务器时，往往会出现以下提示：
 
