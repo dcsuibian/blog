@@ -2,6 +2,7 @@
 title: IntelliJ IDEA 使用指南
 tags: 工具 Java JetBrains IDEA
 description: IDEA的介绍、配置与使用
+abbrlink: 1947073114
 date: 2022-08-20 00:46:18
 ---
 

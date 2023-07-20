@@ -1,8 +1,9 @@
 ---
 title: Eureka与host.docker.internal
-date: 2021-05-23 21:38:19
 tags: Docker Eureka Java
 description: Eureka与host.docker.internal冲突问题
+abbrlink: 4064957586
+date: 2021-05-23 21:38:19
 ---
 
 # 问题描述

@@ -1,8 +1,9 @@
 ---
 title: '''Uncaught TypeError: this.xhr.upload.addEventListener is not a function''解决方案'
-date: 2021-04-22 12:57:17
 tags: JavaScript
 description: Mockjs对XMLHttpRequest的影响
+abbrlink: 76702091
+date: 2021-04-22 12:57:17
 ---
 
 # 解决方案

@@ -1,8 +1,9 @@
 ---
 title: 学以致用——Java批量更改文件字符编码
-date: 2021-05-01 19:45:32
 tags: Java
 description: 批量编码转换
+abbrlink: 784431303
+date: 2021-05-01 19:45:32
 ---
 
 # 代码

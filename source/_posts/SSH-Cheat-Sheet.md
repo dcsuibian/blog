@@ -2,6 +2,7 @@
 title: SSH Cheat Sheet
 tags: SSH
 description: SSH常用命令和配置
+abbrlink: 4103675269
 date: 2023-05-07 18:13:14
 ---
 

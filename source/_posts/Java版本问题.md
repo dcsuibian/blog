@@ -1,8 +1,9 @@
 ---
 title: Java版本问题
-date: 2021-05-08 23:22:47
 tags: Java
 description: javac的-source、-target、--release相关问题
+abbrlink: 1125112739
+date: 2021-05-08 23:22:47
 ---
 
 # 结论
