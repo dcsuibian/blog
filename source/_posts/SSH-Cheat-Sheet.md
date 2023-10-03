@@ -23,6 +23,14 @@ ssh-copy-id -i "$HOME/.ssh/id_rsa.pub" user@host
 
 不过这个不适合Windows（无论是客户端还是服务器），Windows还是手动将客户端`id_rsa.pub`的内容追加到`authorized_keys`里。
 
+如果你是在Linux服务器上手动新建的`.ssh`文件夹和`authorized_keys`文件，那么请记得在服务端运行以下命令：
+
+```shell
+chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
+```
+
+有些时候（比如在CentOS上），权限如果过于宽松，反而会造成密钥登录失败。
+
 3、SSH本机代理转发：
 
 ```shell
@@ -33,7 +41,8 @@ ssh -R 7890:localhost:7890 -N remote-host
 
 ```shell
 export http_proxy='http://127.0.0.1:7890'
-export https_proxy=$http_proxy
+export https_proxy='http://127.0.0.1:7890'
+export all_proxy='socks5://127.0.0.1:7890'
 ```
 
 ## SSH公钥验证
