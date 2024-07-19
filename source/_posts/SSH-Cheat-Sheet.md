@@ -26,7 +26,7 @@ ssh-copy-id -i "$HOME/.ssh/id_rsa.pub" user@host
 如果你是在Linux服务器上手动新建的`.ssh`文件夹和`authorized_keys`文件，那么请记得在服务端运行以下命令：
 
 ```shell
-chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
+mkdir -p ~/.ssh && touch ~/.ssh/authorized_keys && chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 ```
 
 有些时候（比如在CentOS上），权限如果过于宽松，反而会造成密钥登录失败。
